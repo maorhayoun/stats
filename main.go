@@ -81,15 +81,9 @@ func main() {
 		}
 
 		// gather all time keys to query
-		//var keys []interface{}
-		//keys = append(keys, key)
-		// for i := 0; i < hours; i++ {
-		// 	tkey := date.Truncate(time.Hour).Format("200601021504")
-		// 	date = date.Add(-time.Hour)
-		// 	keys = append(keys, tkey)
-		// }
 		keys := helpers.CollectDateKeys(date, hours)
 		keys = append([]interface{}{key}, keys...)
+		
 		// query redis
 		c := pool.Get()
 		defer c.Close()
